@@ -2,23 +2,23 @@
 #include <vector>
 #include <limits>
 
-// Функция для нахождения максимума в векторе
-int findMax(const std::vector<int>& array) {
+// Функция для нахождения минимума в векторе
+int findMin(const std::vector<int>& array) {
     // Проверяем, не пуст ли массив
     if (array.empty()) {
-        return std::numeric_limits<int>::min(); // Возвращаем минимальное значение int
+        return std::numeric_limits<int>::max(); // Возвращаем максимальное значение int
     }
     
-    int max = array[0]; // Предполагаем, что первый элемент - максимальный
+    int min = array[0]; // Предполагаем, что первый элемент - минимальный
     
     // Проходим по всем элементам массива
     for (size_t i = 1; i < array.size(); i++) {
-        if (array[i] > max) {
-            max = array[i]; // Обновляем максимум, если нашли больше
+        if (array[i] < min) {
+            min = array[i]; // Обновляем минимум, если нашли меньше
         }
     }
     
-    return max;
+    return min;
 }
 
 int main() {
@@ -44,8 +44,8 @@ int main() {
         numbers.push_back(element);
     }
     
-    // Используем ранее написанный метод для нахождения максимума
-    int maximum = findMax(numbers);
+    // Используем наш метод для нахождения минимума
+    int minimum = findMin(numbers);
     
     // Вывод результатов
     std::cout << "\n=== РЕЗУЛЬТАТЫ ===" << std::endl;
@@ -57,10 +57,10 @@ int main() {
         }
     }
     
-    std::cout << "\nМаксимальный элемент: " << maximum << std::endl;
+    std::cout << "\nМинимальный элемент: " << minimum << std::endl;
     
     // Дополнительная информация
-    if (maximum == std::numeric_limits<int>::min()) {
+    if (minimum == std::numeric_limits<int>::max()) {
         std::cout << "Примечание: массив был пуст." << std::endl;
     }
     
